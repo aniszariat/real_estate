@@ -57,7 +57,9 @@
 
                         <h6 class="card-title">Update Admin Profile</h6>
 
-                        <form class="forms-sample">
+                        <form method="POST" enctype="multipart/form-data" action="{{route('admin.profile.store')}}" class="forms-sample">
+                            @csrf
+
                             <div class="mb-3">
                                 <label for="username" class="form-label">Username</label>
                                 <input type="text" class="form-control" name="username" id="username" placeholder="username" value="{{$profileData->username}}">
