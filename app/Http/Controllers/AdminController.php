@@ -42,7 +42,6 @@ class AdminController extends Controller
     }
     public function AdminProfileStore(Request $request)
     {
-        echo 'in';
         $id = Auth::user()->id;
         $data = User::find($id);
         $data->name = $request->name;

@@ -342,4 +342,4 @@
     </div> <!-- row -->
 
 </div>
-@endsection()
+@endsection
