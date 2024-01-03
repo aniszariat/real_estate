@@ -29,7 +29,7 @@
                                     <td>{{ $item->type_icon }}</td>
                                     <td>
                                         <a href="{{route('edit.type',$item->id)}}" class="btn btn-inverse-warning">Edit</a>
-                                        <a href="" class="btn btn-inverse-danger">Delete</a>
+                                        <a href="{{route('delete.type',$item->id)}}"" id=" delete" class="btn btn-inverse-danger">Delete</a>
                                     </td>
                                 </tr>
                                 @endforeach
