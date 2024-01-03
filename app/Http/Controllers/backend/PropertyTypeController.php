@@ -36,5 +36,26 @@ class PropertyTypeController extends Controller
         );
         return redirect()->route('all.type')->with($notification);
     }    // end method
+    public function EditType($id)
+    {
+        $types = PropertyType::findOrfail($id);
+        return view('backend.type.add_type', compact('types'));
+    }    // end method
+    public function UpdateType(Request $request)
+    {
+        $types = PropertyType::findOrfail($request->id)->update([
+            "type_name" => $request->type_name,
+            "type_icon" => $request->type_icon
+        ]);
+
+        $notification = array(
+            'message' => 'Type Upadted successfully!',
+            'alert-type' => 'success'
+        );
+
+        return redirect()->route('all.type')->with($notification);
+    }    // end method
+
+
 
 }

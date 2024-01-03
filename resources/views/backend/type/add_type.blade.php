@@ -12,22 +12,26 @@
                 <div class="card">
                     <div class="card-body">
 
-                        <h6 class="card-title">Add Property Type</h6>
+                        <h6 class="card-title"><?= isset($types) ? 'Edit Property Type' : 'Add Property Type' ?></h6>
 
-                        <form method="POST" action="{{route('store.type')}}" class="forms-sample">
+                        <form method="POST" action="{{route(isset($types)?'update.type':'store.type')}}" class="forms-sample">
                             @csrf
                             <!-- type_name	type_icon -->
 
+                            <?php if (isset($types)) { ?>
+                                <input type="text" readonly name="id" id="id" value="<?= $types->id ?>">
+                            <?php } ?>
+
                             <div class="mb-3">
                                 <label for="type_name" class="form-label">Type Name</label>
-                                <input type="text" class="form-control" name="type_name" id="type_name" autocomplete="off" @error( 'type_name' ) is-invalid @enderror>
+                                <input type="text" class="form-control" name="type_name" id="type_name" autocomplete="off" @error( 'type_name' ) is-invalid @enderror @if(isset($types)) value="<?= $types->type_name ?>" @endif>
                                 @error('type_name')
                                 <span class="text-danger">{{ $message}}</span>
                                 @enderror
                             </div>
                             <div class="mb-3">
                                 <label for="type_icon" class="form-label">Type Icon</label>
-                                <input type="text" class="form-control" name="type_icon" id="type_icon" autocomplete="off" @error( 'type_icon' ) is-invalid @enderror>
+                                <input type="text" class="form-control" name="type_icon" id="type_icon" autocomplete="off" @error( 'type_icon' ) is-invalid @enderror @if(isset($types)) value="<?= $types->type_icon ?>" @endif>
                                 @error('type_icon')
                                 <span class="text-danger">{{ $message}}</span>
                                 @enderror
